@@ -1,0 +1,17 @@
+
+
+https://developer.fedoraproject.org/tools/docker/docker-images.html
+
+$ docker pull honda1000/fc23-yocto:1.0
+Or,
+$ make
+
+$ docker run -t -i -h fc23 --name=r31988_fedora23_1.0 --privileged=true -v /home/r31988:/home/r31988 -e HOME=/home/r31988 -w /home/r31988 honda1000/fc23-yocto:1.0 /bin/bash
+
+(container) # ./sources/meta-freescale/scripts/host-prepare.sh
+(container) # dnf install perl-bignum
+
+(container) $ cd <sdk dir>
+(container) $ . fsl-setup-env -m ls1043ardb -j 8 -t 8
+(container) $ bitbake fsl-image-full
+
